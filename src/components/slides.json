@@ -1,0 +1,29 @@
+{
+    "slides":[
+        {
+            "image":"https://st4.depositphotos.com/12985790/24314/i/450/depositphotos_243142000-stock-photo-attractive-girl-beret-posing-while.jpg",
+            "backgroundcolor":"#FAD7B3",
+            "conttent":{
+                "h4":"Amazing Deals This Summer",
+                "p":"Upto 40% off"
+            }
+        },
+        {
+            "image":"https://st3.depositphotos.com/7713882/17906/i/600/depositphotos_179068502-stock-photo-happy-woman-showing-good-big.jpg",
+            "backgroundcolor":"#ffd028",
+            "conttent":{
+                "h4":"Avail Awsome Deals this week!",
+                "p":"Upto 40% off"
+            }
+        },
+        {
+            "image":"https://st2.depositphotos.com/12982378/47451/i/450/depositphotos_474515840-stock-photo-stylish-woman-sun-hat-earphone.jpg",
+            "backgroundcolor":"#F59DA4",
+            "conttent":{
+                "h4":"Amazing Deals This Summer",
+                "p":"Upto 40% off"
+            }
+        }
+
+    ]
+}

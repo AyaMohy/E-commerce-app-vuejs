@@ -1,0 +1,32 @@
+{
+    "categories":[
+        {
+            "id":1,
+            "name":"Jeans",
+            "desc":"",
+            "image":"https://images.pexels.com/photos/7243214/pexels-photo-7243214.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "src":"https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "variants":[]
+
+        },
+        {
+            "id":2,
+            "name":"Jackets",
+            "desc":"",
+            "image":"https://images.pexels.com/photos/12193420/pexels-photo-12193420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "src":"https://images.pexels.com/photos/11075296/pexels-photo-11075296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "src2":"https://images.pexels.com/photos/12278209/pexels-photo-12278209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            "variants":[]
+
+        },
+        {
+            "id":3,
+            "name":"Style Tee Shirts",
+            "desc":"",
+            "image":"https://st3.depositphotos.com/3730721/32516/i/450/depositphotos_325166826-stock-photo-sexy-woman-or-girl-wearing.jpg",
+            "variants":[]
+
+        }
+
+    ]
+}
