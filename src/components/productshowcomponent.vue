@@ -28,12 +28,14 @@ function decreasequantity(){
 
     function addtocart(itemid,isactive){
         quantityincart.value.increasecount(quantity.value)  //increase cartitem
+       
         //check existance
         let targetitem=quantityincart.value.items.find((item)=>item.product.id==itemid )
         if(targetitem){
             targetitem.quantity +=quantity.value
+             targetitem.totalprice=quantityincart.value.count * isactive.price;
         }else{
-            quantityincart.value.increment(itemid,isactive,quantity.value)
+            quantityincart.value.increment(isactive.price,isactive,quantity.value)
         }
         
         quantity.value=0
@@ -65,7 +67,7 @@ function decreasequantity(){
                 </div>
             
                 <button v-show="quantity" @click="(addtocart(isactive.id,isactive))" class="btn btn-add-to-cart fs-5 text-white" style="background-color:#8a4af3">add to cart</button>
-                <!-- <div>{{ quantityincart.items}}</div> -->
+                <div>{{ quantityincart.items}}</div>
             </div>
         </section>
     </div>

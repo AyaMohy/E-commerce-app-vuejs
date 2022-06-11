@@ -1,11 +1,13 @@
-import { reactive, ref } from "vue";
+import { reactive, ref,computed } from "vue";
 import products from '../../products.json'
 const productapi=reactive(products.products)
 const toggleForce = ref(false)
 export const quantityincart = ref({
     count:0,
-    items:[], 
-    increment(itemid,data,quantityofselecteditem){
+    items:[],
+    itemswishlist:[],
+    // totalprice:ref(0), 
+    increment(total,data,quantityofselecteditem){
         // if(toggleForce.value)
         //     { 
         //     let targetindex=this.items.find( (item)=>item.product.id==itemid )
@@ -13,13 +15,32 @@ export const quantityincart = ref({
         // }else{
             this.items.push({
                             product:data,
-                            quantity:quantityofselecteditem
+                            quantity:quantityofselecteditem,
+                            totalprice:quantityofselecteditem* total
                         }) 
         // }
     },
     increasecount(counter){
         this.count +=counter
-    }
+    },
+    gettotalprice(){
+       let total=0;
+        for(let i=0;i<this.items.length;i++){
+            total +=this.items[i].totalprice
+        }
+        return total
+        // this.totalprice=total
+        // return total
+        // return this.items.reduce((previous,current)=>previous.totalprice + current.totalprice )
+     },
+     additemstowishlist(item){
+        this.itemswishlist.push(item) 
+     }
+
+//     gettotalprice:computed( ()=>{
+//         return this.items.reduce((previous,current)=>previous.totalprice+ current.totalprice )
+//    } )
+
     // checkexistance(id){
         // for(let i=0;i<this.items.length;i++){
         //             if(id == this.items[i].product) { 

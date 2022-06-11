@@ -1,11 +1,12 @@
 <script setup>
-import {quantityincart} from '../stores/store.js'
+import {quantityincart} from '../stores/store.js';
+
 
 </script>
 <template>
     <div class="shadow-lg">
         <!-- navbardisplaycomponent -->
-        <section class="d-flex py-3 justify-content-between px-5">
+        <section  class="d-flex shadow-lg  py-3 justify-content-between px-5">
             <div class="col-4">
                 <form action="" class="input-group">
                     <label for="" class="me-2 fs-5" style="color:#8a4af3">En</label>
@@ -19,10 +20,16 @@ import {quantityincart} from '../stores/store.js'
                     </div>
                 </form>
             </div>
-            <div class="col-4 text-center fs-5 fw-bold">Winter Kings</div>
-            <div class="col-4 text-end ">
+            <div class="col-3 text-center fs-5 fw-bold">Winter Kings</div>
+            <div class="col-5 text-end ">
                 <button class="btn fs-5 btn-hover" @click="registeruser">Register</button>
                 <button class="btn fs-5 btn-hover" @click="signinuser">Sign in</button>
+                <router-link to="/wishlist">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                   </svg>   
+                </router-link>
+
                 <router-link :to="{name:'cartdisplay'}" type="button" class="btn btn-white position-relative">
                     <span style="height:32px; width:30px;line-height:30px" class="position-absolute  d-inline-block top-0 start-100 translate-middle badge rounded-pill bg-dark">
                         {{quantityincart.count}}

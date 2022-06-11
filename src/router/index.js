@@ -24,10 +24,18 @@ const router = createRouter({
     path:"/cart",
     name:"cartdisplay",
     component:()=>import('../views/cartview.vue')
+  },
+  {
+    path:'/wishlist',
+    name:'wishlist',
+    component:import('../views/wishlistview.vue')
   }
 
   
-  ]
+  ],
+  scrollBehavior(to,from,savedposition){
+    return {top:0}
+  }
 })
 
 export default router

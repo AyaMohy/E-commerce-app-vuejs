@@ -1,5 +1,6 @@
 <script>
 import products from '../../products.json'
+import iconsdisplay from './iconsdisplay.vue'
 export default{
     data(){
         return{
@@ -10,9 +11,15 @@ export default{
             targetimage:'',
             ishover:false,
             isactive:true,
-            ischange:true,
-            ischange2:true
+            ischange:true,   //value for item depend on color
+            ischange2:true   //value for one product
         }
+    },
+    created() {
+        this.ischange=this.products[0]
+    },
+    components:{ 
+        iconsdisplay 
     },
     methods:{
      selectedproduct($event,item_id,product_id){
@@ -40,7 +47,10 @@ export default{
          if(product==this.ischange2) {
              return this.ischange.price
          }
-     }  
+     }  ,
+     addoneitemtocart(){
+         return this.products[0].id
+     }
     }
 }
 </script>
@@ -50,6 +60,7 @@ export default{
         <!-- productdisplaycomponent -->
         <section class="row" >
             <div  class="card-hover col-auto mx-auto  my-3" style="" v-for="product in products" :key="product.id">
+            <template>{{ischange=product.variantproduct[0]}}</template>
                <div style=" box-shadow:0 0 20px 1px #eee" class="card pt-1 text-center pb-5 border">
                     <router-link class="text-decoration-none" :to="`/product-show/${product.id}`">
                         <img width="200" class="img-fluid" height="200" :src="product.variantproduct[index].image" alt="">
@@ -68,29 +79,19 @@ export default{
                     <p>{{checkchange(product)}}</p>
                 </div>
 
-                <div :class="{'cardinside':isactive == product.id}" class="card-inside h-0 w-0 bg-secondary rounded-3 overflow-hidden d-flex align-items-center position-absolute top-0 start-0 ">
+                <div :class="{'cardinside':isactive == product.id}" class="card-inside h-0 w-0 bg-success bg-gradient rounded-3 overflow-hidden d-flex align-items-center position-absolute top-0 start-0 ">
                     <button @click.prevent="isactive = product.id" class="btn d-none position-absolute top-0 text-end w-100" style="box-shadow:none !important;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
                             </svg>
                     </button>
                    <div class="mx-auto">
-                       <div class="svg-container rounded-3">
-                            <button class="btn d-block"> 
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
-                                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
-                                </svg>
-                            </button>
-                            <button class="btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="white" class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-                                </svg>
-                            </button>
-
-                       </div>
+                        <div class="svg-container rounded-3">
+                           <iconsdisplay :item="ischange"/>
+                        </div>
                       
                    </div>
-                   
+              
                 </div> 
                 
               
