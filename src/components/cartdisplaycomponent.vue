@@ -2,7 +2,7 @@
 import {quantityincart} from '../stores/store.js'
 import emptycartcomponent from './emptycartcomponent.vue'
 import { ref ,computed} from 'vue';
-
+import backcomponent from './backcomponent.vue'
 // let totalpri=ref(0)
 function currencyformat(value){
     return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(value)
@@ -42,7 +42,7 @@ function increasebyone(){
 <template>
     <div class="mx-5 mt-5">
         <!-- cartdisplaycomponent -->
-
+        <backcomponent/>
         <div v-if="quantityincart.count">
 
             <section style="background-color:rgba(138, 74, 243,0.2)" class=" p-4 bg-gradient my-4" v-for="item in quantityincart.items" :key="item.id">

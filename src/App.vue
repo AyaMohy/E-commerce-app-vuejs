@@ -56,7 +56,7 @@ created() {
    <announcedisplaycomponent @close-announce="hideannounce" v-if="!closeannounce"/>
    <div ><navbardisplaycomponent/> </div>
   </header>
-  <div style="margin-top:150px">
+  <div style="margin-top:10px">
 
   </div>
   <RouterView />

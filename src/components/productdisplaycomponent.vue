@@ -47,10 +47,16 @@ export default{
          if(product==this.ischange2) {
              return this.ischange.price
          }
+         else{
+            return product.variantproduct[0].price
+         }
      }  ,
      addoneitemtocart(){
          return this.products[0].id
      }
+    },
+    created(){
+        console.log("hello")
     }
 }
 </script>
@@ -59,24 +65,23 @@ export default{
     <div class="mx-5 mt-5">
         <!-- productdisplaycomponent -->
         <section class="row" >
-            <div  class="card-hover col-auto mx-auto  my-3" style="" v-for="product in products" :key="product.id">
-            <template>{{ischange=product.variantproduct[0]}}</template>
+            <div  class="card-hover col-auto mx-auto my-3" v-for="product in products" :key="product.id">
+            <!-- <template>{{ischange=product.variantproduct[0]}}</template> -->
                <div style=" box-shadow:0 0 20px 1px #eee" class="card pt-1 text-center pb-5 border">
                     <router-link class="text-decoration-none" :to="`/product-show/${product.id}`">
-                        <img width="200" class="img-fluid" height="200" :src="product.variantproduct[index].image" alt="">
+                        <img  width="200" height="200" :src="product == ischange2?ischange.image:product.variantproduct[0].image" alt="">
                         <h3 class="text-center">{{product.name}}</h3>
                     </router-link>
-                    <div class="text-center ">
+                    <!-- <div class="text-center ">
                         <button @click="selectedproduct($event,item.id,product.id)" v-for="item in product.variantproduct" :key="item.id" class="btn mx-1 p-3 rounded-circle border border-secondary" :style="{'backgroundColor':item.color}" ></button>
-                    </div>
-                    <p class="pt-2 fs-5">{{currencyformat(product.variantproduct[0].price)}}</p>
+                    </div> -->
                    <div class="text-center ">
                         <!-- <button  @click="(ischange=item),(ischange2=product)" v-for="item in product.variantproduct" :key="item.id" class="btn mx-1 p-3 rounded-circle border border-secondary" :style="{'backgroundColor':item.color}" ></button> -->
                         <button  @click="changeme(product,item)" v-for="item in product.variantproduct" :key="item.id" class="btn mx-1 p-3 rounded-circle border border-secondary" :style="{'backgroundColor':item.color}" ></button>
                     </div>
                    <!-- <p v-if="ischange2 !==product">{{currencyformat(product.variantproduct[0].price)}}</p> -->
                     <!-- <p >{{ischange2==product?currencyformat(ischange.price):''}}</p> -->
-                    <p>{{checkchange(product)}}</p>
+                    <p>{{currencyformat(checkchange(product))}}</p>
                 </div>
 
                 <div :class="{'cardinside':isactive == product.id}" class="card-inside h-0 w-0 bg-success bg-gradient rounded-3 overflow-hidden d-flex align-items-center position-absolute top-0 start-0 ">
@@ -87,9 +92,8 @@ export default{
                     </button>
                    <div class="mx-auto">
                         <div class="svg-container rounded-3">
-                           <iconsdisplay :item="ischange"/>
+                           <iconsdisplay :products="product" :item="ischange==true?product.variantproduct[0]:ischange"/>
                         </div>
-                      
                    </div>
               
                 </div> 

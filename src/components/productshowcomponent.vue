@@ -9,8 +9,8 @@ const productapi=ref(products.products)
 const quantity=ref(0)
 
 const targetproduct=computed( ()=>{
-     let target=productapi.value.find((target)=>target.id==id  )
-     return target
+    let target=productapi.value.find((target)=>target.id==id  )
+    return target
 } )
 const isactive=ref(targetproduct.value.variantproduct[0])
 let cartitems=ref([{quantity:0,product:isactive.value}])
@@ -67,7 +67,7 @@ function decreasequantity(){
                 </div>
             
                 <button v-show="quantity" @click="(addtocart(isactive.id,isactive))" class="btn btn-add-to-cart fs-5 text-white" style="background-color:#8a4af3">add to cart</button>
-                <div>{{ quantityincart.items}}</div>
+                <!-- <div>{{ quantityincart.items}}</div> -->
             </div>
         </section>
     </div>

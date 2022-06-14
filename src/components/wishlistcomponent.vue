@@ -1,13 +1,16 @@
 <script setup>
 import {quantityincart} from '../stores/store.js'
-
+import productreuse from './productreuse.vue'
+import backcomponent from './backcomponent.vue'
 </script>
 
 <template>
     <div class="mx-5">
         <!-- wishlistcomponent -->
+        <backcomponent/>
         <div v-if="quantityincart.itemswishlist.length>0">
-             {{quantityincart.itemswishlist}}
+        <productreuse :products="quantityincart.itemswishlist"/>
+            <!-- {{quantityincart.itemswishlist}} -->
         </div>
         <div v-else class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">

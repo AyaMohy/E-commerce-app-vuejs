@@ -5,9 +5,17 @@ export default{
     data(){
         return{
             categories:categories.categories,
+            data:[]
 
         }
-    }
+    },
+    // methods:{
+    //     async getproducts(){
+    //         const response=await fetch("https://fakestoreapi.com/products")
+    //         this.data=await response.json()
+            
+    //     }
+    // }
 }
 </script>
 <template>
@@ -15,17 +23,20 @@ export default{
 <h3 class="text-center pt-3"><span class="d-inline-block fw-bold category-fl">C</span>ategory</h3>
     <div class="d-flex mt-3 mb-5 mx-5 justify-content-center justify-content-lg-between flex-wrap">
         <!-- categorycomponent -->
-        <section style="height:50vh;" class=" col-12 bg-transparent col-sm-9 col-md-4 p-2 hover-see-more rounded my-3 position-relative" v-for="category in categories" :key="category.id">
+        <section style="height:40vh;" class=" col-12 bg-transparent col-sm-9 col-md-6 col-lg-3 p-2 hover-see-more rounded my-3 position-relative" v-for="category in categories" :key="category.id">
             
              <img :src="category.image" class="col-6 position-absolute img-fluid top-0 h-100" alt="">
             <div class="border border-2 border-secondary border-start-0 col-6 bg-light h-100 pt-5 top-0 position-absolute start-50 text-center">
-                <h3 class="mt-5 text-dark px-md-4" style="">{{category.name}}</h3>  
+                <h5 class="mt-5 text-dark px-md-4" style="">{{category.name}}</h5>  
             </div>
 
             <div style="background-color:#F59DA4 ;height: 0px;" class="w-50 text-center bg-info bg-gradient overflow-hidden see-more-box top-0 start-50 position-absolute">
-                <router-link :to="`/category-show/${category.id}`">
-                     <button class="btn top-50  btn-seemore text-dark fs-5 border  px-3 ">see more</button>
-                </router-link>
+                <!-- <router-link :to="`/category-show/${category.id}`"> -->
+                    <router-link :to="{name:'category.show',query:{'category':category.name}}">
+                        <button class="btn top-50  btn-seemore text-dark fs-5 border  px-3 ">
+                            see more
+                        </button>
+                    </router-link>
                 
             </div>
            

@@ -1,12 +1,13 @@
 <script setup>
 import {quantityincart} from '../stores/store.js';
-
+import { ref } from 'vue';
+const cartactive=ref(false)
 
 </script>
 <template>
     <div class="shadow-lg">
         <!-- navbardisplaycomponent -->
-        <section  class="d-flex shadow-lg  py-3 justify-content-between px-5">
+        <section  class="d-flex flex-wrap shadow-lg  py-3 justify-content-between px-5">
             <div class="col-4">
                 <form action="" class="input-group">
                     <label for="" class="me-2 fs-5" style="color:#8a4af3">En</label>
@@ -20,22 +21,26 @@ import {quantityincart} from '../stores/store.js';
                     </div>
                 </form>
             </div>
-            <div class="col-3 text-center fs-5 fw-bold">Winter Kings</div>
-            <div class="col-5 text-end ">
-                <button class="btn fs-5 btn-hover" @click="registeruser">Register</button>
-                <button class="btn fs-5 btn-hover" @click="signinuser">Sign in</button>
+            <div class="col-12 col-md-3 text-center fs-5 fw-bold"><router-link to="/" class="text-decoration-none">Winter Kings</router-link> </div>
+            <div class="col-md-5 text-end ">
+                <router-link to="/signup" class="col-12">
+                    <button class="btn fs-5 btn-hover" @click="registeruser">Register</button>
+                </router-link>
+                <router-link to="/login">
+                    <button class="btn fs-5 btn-hover" @click="signinuser">log in</button>
+                </router-link>
                 <router-link to="/wishlist">
                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
                          <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                    </svg>   
                 </router-link>
 
-                <router-link :to="{name:'cartdisplay'}" type="button" class="btn btn-white position-relative">
-                    <span style="height:32px; width:30px;line-height:30px" class="position-absolute  d-inline-block top-0 start-100 translate-middle badge rounded-pill bg-dark">
+                <router-link  style="outline:none !important;box-shadow:none !important;" :to= "{name:'cartdisplay'}" type="button" class="mt-5 mt-md-0 btn btn-white position-relative">
+                    <span  style="height:32px; width:30px;line-height:30px" class="position-absolute  d-inline-block top-0 start-100 translate-middle badge rounded-pill bg-dark">
                         {{quantityincart.count}}
                     </span>
 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#8a4af3" class="bi bi-cart-dash-fill " viewBox="0 0 16 16">
+                    <svg  xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#8a4af3" class="bi bi-cart-dash-fill" viewBox="0 0 16 16">
                         <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM6.5 7h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1 0-1z"/>
                     </svg>
                
@@ -59,3 +64,5 @@ import {quantityincart} from '../stores/store.js';
     color: #8a4af3;
 }
 </style>
+
+
